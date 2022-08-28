@@ -32,25 +32,25 @@ void color(char col[15])
   {
 	SetConsoleTextAttribute(h,6);      //yellow
   }
-  else if(strcmp(col,"gray")==0)
+  else if(strcmp(col,"gray")==0)      
   {
-	SetConsoleTextAttribute(h,8);      //gray
+	SetConsoleTextAttribute(h,8);      //gray 
   }
-  else if(strcmp(col,"purple")==0)
+  else if(strcmp(col,"purple")==0)     
   {
 	SetConsoleTextAttribute(h,5);     //purple
   }
-  else if(strcmp(col,"lightgreen")==0)
+  else if(strcmp(col,"lightgreen")==0) 
   {
-	SetConsoleTextAttribute(h,10);
+	SetConsoleTextAttribute(h,10);    //lightgreen
   }
   else if(strcmp(col,"lightblue")==0)
   {
-	SetConsoleTextAttribute(h,9);
+	SetConsoleTextAttribute(h,9);     //lightblue
   }
   else if(strcmp(col,"lightred")==0)
   {
-	SetConsoleTextAttribute(h,12);
+	SetConsoleTextAttribute(h,12);    //lightred
   }
   else if(strcmp(col,"lightpurple")==0)
   {
@@ -58,16 +58,19 @@ void color(char col[15])
   }
   else if(strcmp(col,"lightyellow")==0)
   {
-	SetConsoleTextAttribute(h,14);
+	SetConsoleTextAttribute(h,14);   //lightyellow
   }
 
 }
+//makes execution slow
+//helps to to give annimation effect
 void delay(int n)
 {
 	int end = 100*n;
 	clock_t st = clock();
 	while(clock()<st+end);
 }
+//prints long line
 void line1(){
 	int i;
 	for(i=1; i<=20;i++){
@@ -146,10 +149,6 @@ int login1()
 	printf("\nEnter a password(4) :");
 	color("lightgreen");
 		scanf("%s",mpass);
-	/*	for(i=0; i<5; i++){
-			mpass[i]=getch();
-			printf("*");
-		}*/
 		printf("\n");
 	 delay(1);
 	line1();
@@ -418,19 +417,6 @@ struct bill
 	int bill_quantity;
 	float bill_price;
 };
-int strcom(char str[],char str1[])
-{
-	int i,c=0;
-	for(i=0; str[i],str1[i];i++){
-		if(str[i]==str1[i]){
-			c++;
-		}
-	}
-	if(c==i){
-	return 0;
-	}
-	return 1;
-}
 //generats bill
 void gbill()
 {
@@ -612,7 +598,7 @@ void login()
 	scanf("%s", uname);
     fflush(stdin);
 	color("aqua");
-	printf("\nEnter a password :");
+	printf("\nEnter a password[10] :");
 	color("lightgreen");
 		scanf("%s",upass);
 /*	for(i=0; i<11; i++){
@@ -772,17 +758,58 @@ void showmain()
     printf(" 1 for add book\n 2 for all available books\n 3 Search book\n 4 all users\n 5 Store info\n 6 User info\n 7 signup(Ad)\n 8 Exit\n 9 Clear screen");
 	color("white");	
 
-}					
+}	
+int showfrotpage()
+{
+	color("lightyellow");
+	printf("_______________[ LIBRARY MANAGEMENT SERVISES ]______________\n");
+	color("gray");
+	color("purple");
+	printf("Servises :\n");
+	color("aqua");
+	printf("For User : \n");
+	color("gray");
+	printf("1.User can purches books \n");
+	printf("2.User can read any books\n");
+	printf("3.User can create account\n");
+	color("aqua");
+	printf("For Maintainer :\n");
+	color("gray");
+	printf("1.Maintainer can purches books \n");
+	printf("2.Maintainer can add books\n");
+	printf("3.Maintainer can access all details of store\n");
+	printf("4.Maintainer can access all details of Users\n");
+	color("purple");
+	line1();
+	char ch;
+	color("aqua");
+	printf("\n\nEnter [Y/y] to enter :");
+	color("lightgreen");
+	scanf("%c",&ch);
+	color("white");
+	if(ch=='y'||ch=='Y'){
+	return 1;
+	}
+	else
+	return 0;
+	
+
+}				
 int main(int argc, char *argv[])
 {
+
+	if(showfrotpage()){
 	int n,num,i,k,brk=0;
 	char ch;
-  while(1){
+    while(1){
 	line1();
-	color("green");
-	printf("\nEnter Who are you.. \n 1 user\n 2 Maintainer\n 3 Exit");
+	color("aqua");
+	printf("\nEnter Who are you.. \n");
+	color("lightgreen");
+	 printf(" 1 user\n 2 Maintainer\n 3 Exit");
 	color("blue");
 	printf("\nEnter a choice :");
+	color("lightgreen");
 	scanf("%d", &k);
 	switch(k){
 		     //for user 
@@ -954,4 +981,12 @@ int main(int argc, char *argv[])
 	if(brk==1)
 	break;
    }
+	}
+	else{
+		color("purple");
+		printf("Thanks for visiting : \n");
+		color("white");
+		exit(0);
+
+	}
 }
