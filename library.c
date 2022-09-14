@@ -8,7 +8,7 @@
 void login();
 void signup();
 void OTP();
-
+//Color section
 void color(char col[15])
 {
 	HANDLE h =GetStdHandle(STD_OUTPUT_HANDLE);
