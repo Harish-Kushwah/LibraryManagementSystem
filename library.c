@@ -63,7 +63,7 @@ void color(char col[15])
 
 }
 //makes execution slow
-//helps to to give annimation effect
+//helps to to give animation effect
 void delay(int n)
 {
 	int end = 100*n;
@@ -104,7 +104,7 @@ void signup1()
 	fflush(stdin);
 	color("yellow");
 	printf("_________________[SIGNUP HEAR]________________\n");
-	fp = fopen("maintainer_info.dat","ab");
+	fp = fopen("files/maintainer_info.dat","ab");
 	color("aqua");
 	printf("Enter a maintainer name :");
 	color("lightgreen");
@@ -122,7 +122,7 @@ void signup1()
 	fwrite(&m1,sizeof(m1),1,fp);
 	fclose(fp);
 	color("purple");
-	printf("Account is succesfully created\n");
+	printf("Account is successfully created\n");
 	color("white");
 	line1();
 	
@@ -139,7 +139,7 @@ int login1()
 	fflush(stdin);
 	color("yellow");
 	printf("_________________[LOGIN HEAR]_________________\n");
-	fp =fopen("maintainer_info.dat","rb");
+	fp =fopen("files/maintainer_info.dat","rb");
 	color("aqua");
 	printf("Enter a user name :");
 	color("lightgreen");
@@ -165,7 +165,7 @@ int login1()
 	}
 		if(flag1==1 && flag2==1){
 			color("purple");
-			printf("User is avaible\n");
+			printf("User is available\n");
 			printf("Name of User :");
 			color("lightgreen");
 			printf("%s " , m1.mname);
@@ -178,7 +178,7 @@ int login1()
 		}
 	   else if(flag1!=1 && flag2==1){
 		color("purple");
-		printf("\n Enter a valide user name\n");
+		printf("\n Enter a valid user name\n");
 		k=0;
 		}
 	else{
@@ -202,7 +202,7 @@ void addbook(){
 	FILE *fp;
 	struct book b1;
 	char str[20];
-	fp = fopen("books_collection.dat", "ab");
+	fp = fopen("files/books_collection.dat", "ab");
 	 color("aqua");
 	 printf("Enter a bookid :");
 	 color("lightgreen");
@@ -232,7 +232,7 @@ void showall()
 	FILE *fp;
 	struct book b1;
 	int i=1;
-	fp = fopen("books_collection.dat", "rb");
+	fp = fopen("files/books_collection.dat", "rb");
 	color("lightyellow");
 	printf("_______________[WELCOME IN TO STORE]______________\n");
 	if(fp ==NULL){
@@ -274,7 +274,7 @@ int findbook()
 	FILE *fp;
 	struct book b1;
 	int bookid,flag = 0,n ;
-	fp = fopen("books_collection.dat","rb");
+	fp = fopen("files/books_collection.dat","rb");
 	color("lightblue");
 	printf("Enter how want to search\n");
 	color("green");
@@ -407,7 +407,7 @@ void purchase(){
 			
 	}
 	else {
-		printf("\nBook is not availabe");
+		printf("\nBook is not available");
 	}
 }
 struct bill
@@ -429,7 +429,7 @@ void gbill()
 	int bookid,quantity,flag=0,i,flag1,flag2;
 	int chu;
 	char uname[20];
-	fp = fopen("bills_data.dat","ab");      // add bills in bills_data.dat file
+	fp = fopen("files/bills_data.dat","ab");      // add bills in bills_data.dat file
 	fpu=fopen("user1.txt","rb");            //open user1.txt data file
 	fflush(stdin);
 	color("lightyellow");
@@ -460,7 +460,7 @@ void gbill()
 	
 	fclose(fpu);   //file pointer of user
 	fflush(stdin);
-	fpb=fopen("books_collecton.dat","rb");  //open books_collection.dat 
+	fpb=fopen("files/books_collecton.dat","rb");  //open books_collection.dat 
 	//fpb=fopen("bills_data.dat","rb");
 	//check the book is present
 	if(flag1==1){
@@ -470,7 +470,7 @@ void gbill()
 	scanf("%d", &bookid);
 	fflush(stdin);
 	color("aqua");
-	printf("Enter a quantiy of books :");
+	printf("Enter a quantity of books :");
 	color("lightgreen");
 	scanf("%d", &quantity);
 	fflush(stdin);
@@ -488,7 +488,7 @@ void gbill()
 		 if(flag==1){
 		 fwrite(&bl1,sizeof(bl1),1,fp);
 		 color("purple");
-		 printf("\nCongratulation Bill succesfully generated");
+		 printf("\nCongratulation Bill successfully generated");
 		 color("white");
 		 }
 		 fclose(fpb);
@@ -501,7 +501,7 @@ void showbill()
 {
 	FILE *fp;
 	struct bill bl1;
-	fp = fopen("bills_data.dat", "r");
+	fp = fopen("files/bills_data.dat", "r");
 	if(fp==NULL){
 		printf("File is not opened");
 		exit(1);
@@ -518,7 +518,7 @@ void storeinfo()
 	FILE *fp;
 	int tquan=0,tbook=1;
 	float tprice=0;
-	fp = fopen("books_collection.dat","rb");
+	fp = fopen("files/books_collection.dat","rb");
 	while(fread(&b1,sizeof(b1),1,fp)>0){
 		tquan += b1.quantity;
 		tbook++;
@@ -555,13 +555,13 @@ void signup()
 	color("lightyellow");
 	printf("_________________[SIGNUP HEAR]________________\n");
 	color("white");
-	fp = fopen("user1.txt","ab");
+	fp = fopen("files/user1.txt","ab");
 	color("aqua");
 	printf("Enter a user name :");
 	color("lightgreen");
 	gets(u1.uname);
 	color("aqua");
-	printf("\nEnter a user passowd(10) :");
+	printf("\nEnter a user password(10) :");
 	fflush(stdin);
 	color("lightgreen");
  	scanf("%s", u1.upass);
@@ -573,7 +573,7 @@ void signup()
 	fwrite(&u1,sizeof(u1),1,fp);
 	fclose(fp);
 	color("purple");
-	printf("Account is succesfully created\n");
+	printf("Account is successfully created\n");
 	line1();
 	color("white");
 	
@@ -591,7 +591,7 @@ void login()
 	color("lightyellow");
 	printf("_________________[LOGIN HEAR]_________________\n");
 	color("white");
-	fp =fopen("user1.txt","rb");
+	fp =fopen("files/user1.txt","rb");
 	color("aqua");
 	printf("Enter a user name :");
 	color("lightgreen");
@@ -619,7 +619,7 @@ void login()
 	}
 		if(flag1==1 && flag2==1){
 			color("purple");
-			printf("User is avaible\n");
+			printf("User is available\n");
 			printf("Name of User :");
 			color("lightgreen");
 			printf("%s " , u1.uname);
@@ -632,7 +632,7 @@ void login()
 		}
 	   else if(flag1!=1 && flag2==1){
 		color("purple");
-		printf("\n Enter a valide user name\n");
+		printf("\n Enter a valid user name\n");
 		}
 	else{
 		color("purple");
@@ -654,7 +654,7 @@ void showallusr()
 	FILE *fp;
 	struct user u1;
 	int i=1;
-	fp=fopen("user1.txt", "rb");	
+	fp=fopen("files/user1.txt", "rb");	
 	if(fp==NULL){
 		color("purple");
 		printf("No User present");
@@ -678,7 +678,7 @@ void userinfo()
 	FILE *fp;
 	struct user u1;
 	int i=0,tuser=0;
-	fp = fopen("user1.txt","rb");
+	fp = fopen("files/user1.txt","rb");
 	while(fread(&u1,sizeof(u1),1,fp)>0){
 		   tuser += i;
 		   i++;
@@ -762,25 +762,26 @@ void showmain()
 int showfrotpage()
 {
 	color("lightyellow");
-	printf("_______________[ LIBRARY MANAGEMENT SERVISES ]______________\n");
+	printf("_______________[ LIBRARY MANAGEMENT SERVICES ]______________\n");
 	color("gray");
 	color("purple");
-	printf("Servises :\n");
+	printf("Services :\n");
 	color("aqua");
 	printf("For User : \n");
 	color("gray");
-	printf("1.User can purches books \n");
+	printf("1.User can purchase books \n");
 	printf("2.User can read any books\n");
 	printf("3.User can create account\n");
 	color("aqua");
 	printf("For Maintainer :\n");
 	color("gray");
-	printf("1.Maintainer can purches books \n");
+	printf("1.Maintainer can purchase books \n");
 	printf("2.Maintainer can add books\n");
 	printf("3.Maintainer can access all details of store\n");
 	printf("4.Maintainer can access all details of Users\n");
 	color("purple");
 	line1();
+	printf("\n");
 	char ch;
 	color("aqua");
 	printf("\n\nEnter [Y/y] to enter :");
